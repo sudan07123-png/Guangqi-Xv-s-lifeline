@@ -1,0 +1,89 @@
+{
+  "xu-guangqi": {
+    "id": "xu-guangqi",
+    "name": "徐光启",
+    "courtesyName": "子先",
+    "title": "主角",
+    "role": "protagonist",
+    "bio": "明代科学家、政治家。上海县人。一生致力于会通中西之学，译《几何原本》，修《崇祯历书》。",
+    "portraits": {
+      "default": "assets/images/characters/xu-guangqi-default.png",
+      "young": "assets/images/characters/xu-guangqi-young.png",
+      "scholar": "assets/images/characters/xu-guangqi-scholar.png",
+      "elder": "assets/images/characters/xu-guangqi-elder.png"
+    },
+    "color": "#1b3d1c"
+  },
+  "xu-father": {
+    "id": "xu-father",
+    "name": "徐父",
+    "courtesyName": null,
+    "title": "务农兼经商",
+    "role": "family",
+    "bio": "徐光启的父亲，以务农和经商维持家计。",
+    "portraits": {
+      "default": "assets/images/characters/xu-father-default.png"
+    },
+    "color": "#5a4a3a"
+  },
+  "xu-mother": {
+    "id": "xu-mother",
+    "name": "徐母",
+    "courtesyName": null,
+    "title": "慈母",
+    "role": "family",
+    "bio": "徐光启的母亲，重视教育，坚持让儿子读书。",
+    "portraits": {
+      "default": "assets/images/characters/xu-mother-default.png"
+    },
+    "color": "#8b5e3c"
+  },
+  "matteo-ricci": {
+    "id": "matteo-ricci",
+    "name": "利玛窦",
+    "courtesyName": "Matteo Ricci",
+    "title": "耶稣会传教士",
+    "role": "mentor",
+    "bio": "意大利耶稣会传教士，徐光启的老师和挚友。将西方天文、数学、地理知识传入中国。",
+    "portraits": {
+      "default": "assets/images/characters/matteo-ricci-default.png"
+    },
+    "color": "#4a6fa5"
+  },
+  "xu-ji": {
+    "id": "xu-ji",
+    "name": "徐骥",
+    "courtesyName": "龙与",
+    "title": "长子",
+    "role": "family",
+    "bio": "徐光启的长子，继承父志。",
+    "portraits": {
+      "default": "assets/images/characters/xu-ji-default.png"
+    },
+    "color": "#3d6b4f"
+  },
+  "chongzhen": {
+    "id": "chongzhen",
+    "name": "崇祯帝",
+    "courtesyName": null,
+    "title": "大明皇帝",
+    "role": "ruler",
+    "bio": "明朝末代皇帝，重用徐光启修历。",
+    "portraits": {
+      "default": "assets/images/characters/chongzhen-default.png"
+    },
+    "color": "#8b0000"
+  },
+  "conservative": {
+    "id": "conservative",
+    "name": "保守派朝臣",
+    "courtesyName": null,
+    "title": "反对西学的守旧大臣",
+    "role": "antagonist",
+    "bio": "代表反对西学的保守势力。",
+    "portraits": {
+      "default": "assets/images/characters/conservative-default.png"
+    },
+    "color": "#6b4c3b"
+  }
+}

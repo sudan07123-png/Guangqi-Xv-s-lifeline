@@ -1,0 +1,172 @@
+/* ============================================
+   徐光启 · 会通之志 — 叙事页样式
+   ============================================ */
+
+#page-narrative {
+  background: #000;
+  overflow: hidden;
+}
+
+/* === 背景图层 === */
+.narrative-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity var(--duration-slow) var(--ease-out);
+  z-index: var(--z-background);
+}
+
+.narrative-bg::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* === 人物立绘区域 === */
+.narrative-characters {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: var(--z-character);
+  pointer-events: none;
+}
+
+.narrative-char-left,
+.narrative-char-right {
+  position: absolute;
+  bottom: 0;
+  max-height: 80%;
+  max-width: 35%;
+  transition: opacity var(--duration-normal) var(--ease-out),
+              transform var(--duration-normal) var(--ease-out);
+}
+
+.narrative-char-left {
+  left: 5%;
+  transform: translateX(0);
+}
+
+.narrative-char-right {
+  right: 5%;
+  transform: translateX(0);
+}
+
+.narrative-char-left.hidden,
+.narrative-char-right.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.narrative-char-left.enter {
+  animation: slideInLeft 0.5s var(--ease-out) forwards;
+}
+
+.narrative-char-right.enter {
+  animation: slideInRight 0.5s var(--ease-out) forwards;
+}
+
+/* === 场景标题叠层（转场时显示） === */
+.scene-title-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-page) var(--ease-out);
+}
+
+.scene-title-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scene-title-overlay .scene-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-sm);
+}
+
+.scene-title-overlay .scene-location {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--color-parchment);
+  opacity: 0.8;
+}
+
+/* === 顶部 HUD === */
+.narrative-hud {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: var(--z-overlay);
+  pointer-events: none;
+}
+
+.narrative-hud > * {
+  pointer-events: auto;
+}
+
+.hud-btn {
+  width: 40px; height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  color: var(--color-parchment);
+  font-size: var(--text-lg);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.hud-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.hud-chapter-indicator {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-parchment);
+  background: rgba(0, 0, 0, 0.5);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  letter-spacing: 0.05em;
+}
+
+/* === 响应式 === */
+@media (max-width: 768px) {
+  .narrative-char-left  { max-width: 40%; left: 2%; }
+  .narrative-char-right { max-width: 40%; right: 2%; }
+
+  .dialogue-box {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .dialogue-box .dialogue-text {
+    font-size: var(--text-lg);
+  }
+
+  .choices-container {
+    bottom: 15%;
+    width: 95%;
+  }
+}

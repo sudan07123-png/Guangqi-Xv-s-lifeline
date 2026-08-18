@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="徐光启 · 会通之志 — 一个关于知识、信仰与抉择的大明故事。交互历史叙事游戏。">
+  <title>徐光启 · 会通之志</title>
+
+  <!-- ============================================================
+       CSS（按依赖顺序加载）
+       ============================================================ -->
+  <link rel="stylesheet" href="styles/variables.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/animations.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/title.css">
+  <link rel="stylesheet" href="styles/narrative.css">
+  <link rel="stylesheet" href="styles/friend-circle.css">
+  <link rel="stylesheet" href="styles/map-hub.css">
+  <link rel="stylesheet" href="styles/ending.css">
+
+  <!-- Google Fonts: 在中国大陆可能被墙，已禁用。
+       如需自定义字体，可自行下载 Noto Serif SC 放入 assets/fonts/ 目录
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  -->
+
+  <!-- Favicon（Base64 编码的简单"徐"字图标，避免额外文件依赖） -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%231b3d1c'/><text x='32' y='46' text-anchor='middle' font-size='36' fill='%23c9a96e' font-family='serif'>徐</text></svg>">
+</head>
+<body>
+
+  <!-- ============================================================
+       页面 1: 标题页
+       ============================================================ -->
+  <section id="page-title" class="page-section active">
+
+    <div class="title-border-top"></div>
+
+    <h1 class="title-main">
+      <span class="title-name">徐光启</span>
+    </h1>
+    <p class="title-sub">会通之志 · 一个关于知识、信仰与抉择的大明故事</p>
+
+    <nav class="title-menu">
+      <button id="btn-new-game" class="title-btn btn-primary">
+        开始新游戏
+      </button>
+      <button id="btn-continue" class="title-btn btn-secondary" style="display:none;">
+        继续游戏
+      </button>
+      <button id="btn-load" class="title-btn btn-ghost">
+        加载存档
+      </button>
+    </nav>
+
+    <div class="title-border-bottom"></div>
+
+    <div class="title-version">v0.1.0 · Phase 1 框架骨架 · 上海·法华汇</div>
+  </section>
+
+  <!-- ============================================================
+       页面 2: 叙事页（核心游戏界面）
+       ============================================================ -->
+  <section id="page-narrative" class="page-section">
+
+    <!-- 背景图层 -->
+    <div class="narrative-bg" style="background-image: url('');"></div>
+
+    <!-- 人物立绘 -->
+    <div class="narrative-characters">
+      <img class="narrative-char-left hidden" src="" alt="">
+      <img class="narrative-char-right hidden" src="" alt="">
+    </div>
+
+    <!-- 场景标题叠层（转场时显示） -->
+    <div id="scene-title-overlay" class="scene-title-overlay">
+      <div class="scene-title"></div>
+      <div class="scene-location"></div>
+    </div>
+
+    <!-- 旁白 / 内心独白叠层 -->
+    <div id="narration-overlay" class="narration-overlay">
+      <div class="narration-text"></div>
+    </div>
+
+    <!-- 对话框 -->
+    <div id="dialogue-box" class="dialogue-box">
+      <div class="speaker-tag"></div>
+      <div class="dialogue-text"></div>
+      <div class="click-hint">▼ 点击或按空格继续</div>
+    </div>
+
+    <!-- 选项按钮容器 -->
+    <div id="choices-container" class="choices-container"></div>
+
+    <!-- 顶部 HUD -->
+    <div class="narrative-hud">
+      <button class="hud-btn" id="hud-menu" title="菜单">☰</button>
+      <span class="hud-chapter-indicator">📜 第一章</span>
+      <button class="hud-btn" id="hud-settings" title="设置">⚙</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       页面 3: 朋友圈
+       ============================================================ -->
+  <section id="page-friends" class="page-section">
+
+    <!-- 顶栏 -->
+    <div class="friends-header">
+      <span class="friends-back" id="friends-back-btn">← 返回地图</span>
+      <span class="friends-title">📱 时空朋友圈</span>
+      <span style="width:60px;"></span><!-- 占位居中 -->
+    </div>
+
+    <!-- 主体：左侧时间轴 + 右侧 Feed -->
+    <div class="friends-body">
+      <aside id="friends-timeline" class="friends-timeline">
+        <div class="timeline-heading">📅 时间轴</div>
+        <!-- 动态填充 -->
+      </aside>
+
+      <main id="friends-feed" class="friends-feed">
+        <!-- 动态填充 -->
+      </main>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       页面 4: 地图枢纽
+       ============================================================ -->
+  <section id="page-map" class="page-section">
+
+    <!-- 顶栏 -->
+    <div class="map-header">
+      <div>
+        <span class="map-title">🗺️ 徐光启 · 时空漫游</span>
+      </div>
+      <span class="map-subtitle">选择一个章节，踏入那段历史</span>
+    </div>
+
+    <!-- 主区域：地图 + 时间轴 -->
+    <div class="map-main">
+      <!-- 地图区（Phase 4 集成 Leaflet） -->
+      <div class="map-area">
+        <div class="map-placeholder">
+          <div class="map-icon">🗺️</div>
+          <p>大明万里山河</p>
+          <p class="map-hint">Leaflet 地图将在 Phase 4 集成</p>
+          <div class="map-markers-preview">
+            <span class="map-marker-dot"></span>
+            <span class="map-marker-dot"></span>
+            <span class="map-marker-dot"></span>
+            <span class="map-marker-dot"></span>
+            <span class="map-marker-dot"></span>
+            <span class="map-marker-dot"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧时间轴面板 -->
+      <aside id="map-timeline-panel" class="map-timeline-panel">
+        <div class="timeline-heading">📅 生平大事记</div>
+        <!-- 动态填充 -->
+      </aside>
+    </div>
+
+    <!-- 底部章节卡片 -->
+    <nav id="map-chapters" class="map-chapters">
+      <!-- 动态填充 -->
+    </nav>
+  </section>
+
+  <!-- ============================================================
+       页面 5: 结局页
+       ============================================================ -->
+  <section id="page-ending" class="page-section">
+
+    <div class="ending-rank-badge silver">结局</div>
+
+    <h1 class="ending-title">旅途结束</h1>
+    <p class="ending-subtitle">每一次选择，都塑造了不同的人生轨迹</p>
+
+    <div class="ending-description">
+      徐光启的故事在此暂告一段落。回顾这一路，有些抉择改变了历史，有些遗憾成为了历史。
+    </div>
+
+    <div class="ending-text" style="color:var(--color-parchment);max-width:600px;line-height:2;margin-bottom:var(--space-2xl);"></div>
+
+    <!-- 旅途统计 -->
+    <div class="ending-stats">
+      <div class="ending-stat">
+        <div class="stat-label">📚 学识</div>
+        <div class="stat-value">70</div>
+        <div class="stat-bar"><div class="stat-bar-fill" style="width:70%;"></div></div>
+      </div>
+      <div class="ending-stat">
+        <div class="stat-label">⚔️ 勇气</div>
+        <div class="stat-value">60</div>
+        <div class="stat-bar"><div class="stat-bar-fill" style="width:60%;"></div></div>
+      </div>
+      <div class="ending-stat">
+        <div class="stat-label">🎋 气节</div>
+        <div class="stat-value">70</div>
+        <div class="stat-bar"><div class="stat-bar-fill" style="width:70%;"></div></div>
+      </div>
+    </div>
+
+    <!-- 行动按钮 -->
+    <div class="ending-actions">
+      <button id="btn-restart" class="ending-btn btn-primary">重新开始</button>
+      <button id="btn-to-map" class="ending-btn btn-secondary">返回地图</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       JavaScript（按依赖顺序加载）
+       ============================================================ -->
+
+  <!-- 核心层 -->
+  <script src="scripts/core/event-bus.js"></script>
+  <script src="scripts/core/state-manager.js"></script>
+  <script src="scripts/core/router.js"></script>
+
+  <!-- 引擎层 -->
+  <script src="scripts/engine/data-loader.js"></script>
+  <script src="scripts/engine/save-system.js"></script>
+  <script src="scripts/engine/choice-system.js"></script>
+  <script src="scripts/engine/scene-engine.js"></script>
+
+  <!-- UI 组件 + 页面 -->
+  <script src="scripts/ui/components.js"></script>
+  <script src="scripts/ui/title-screen.js"></script>
+  <script src="scripts/ui/narrative-page.js"></script>
+  <script src="scripts/ui/friend-circle.js"></script>
+  <script src="scripts/ui/map-hub.js"></script>
+  <script src="scripts/ui/ending-page.js"></script>
+
+  <!-- 入口 -->
+  <script src="scripts/main.js"></script>
+
+</body>
+</html>

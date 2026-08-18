@@ -1,0 +1,20 @@
+{
+  "events": [
+    { "year": 1562, "title": "徐光启出生", "location": "上海县法华汇", "chapter": "ch01", "type": "birth" },
+    { "year": 1571, "title": "开始读书识字", "location": "上海", "chapter": "ch01", "type": "education" },
+    { "year": 1581, "title": "考中秀才", "location": "上海", "chapter": "ch01", "type": "examination" },
+    { "year": 1582, "title": "乡试落第，开始游历", "location": "两广", "chapter": "ch01", "type": "travel" },
+    { "year": 1593, "title": "韶州初见世界地图", "location": "广东韶州", "chapter": "ch01", "type": "encounter" },
+    { "year": 1597, "title": "乡试中举", "location": "北京", "chapter": "ch01", "type": "examination" },
+    { "year": 1600, "title": "南京初遇利玛窦", "location": "南京", "chapter": "ch02", "type": "encounter" },
+    { "year": 1604, "title": "进士及第，入翰林院", "location": "北京", "chapter": "ch02", "type": "examination" },
+    { "year": 1607, "title": "《几何原本》前六卷刊印", "location": "北京", "chapter": "ch02", "type": "publication" },
+    { "year": 1610, "title": "利玛窦病逝", "location": "北京", "chapter": "ch02", "type": "death" },
+    { "year": 1613, "title": "东林党争·辞官", "location": "北京", "chapter": "ch03", "type": "politics" },
+    { "year": 1618, "title": "天津屯田·著《甘薯疏》", "location": "天津", "chapter": "ch03", "type": "agriculture" },
+    { "year": 1619, "title": "萨尔浒之败·上疏练兵", "location": "北京", "chapter": "ch03", "type": "military" },
+    { "year": 1629, "title": "主持历法改革", "location": "北京", "chapter": "ch03", "type": "science" },
+    { "year": 1632, "title": "保守派弹劾", "location": "北京", "chapter": "ch03", "type": "politics" },
+    { "year": 1633, "title": "病逝于任上", "location": "北京", "chapter": "ch03", "type": "death" }
+  ]
+}

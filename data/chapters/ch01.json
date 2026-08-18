@@ -1,0 +1,212 @@
+{
+  "chapterId": "ch01",
+  "title": "寒门少年",
+  "subtitle": "1562 — 1600",
+  "unlockCondition": null,
+  "scenes": {
+    "ch01_s01": {
+      "sceneId": "ch01_s01",
+      "title": "诞生与童年",
+      "location": "loc_shanghai",
+      "background": "assets/images/backgrounds/shanghai-fields.jpg",
+      "bgm": null,
+      "steps": [
+        {
+          "type": "narration",
+          "text": "嘉靖四十一年（1562），上海县法华汇，一户务农兼经商的人家，添了一个男孩。",
+          "citationRef": "cit_001",
+          "citationAnchor": "上海县法华汇",
+          "delay": 3000
+        },
+        {
+          "type": "dialogue",
+          "speakerId": "xu-mother",
+          "expression": "default",
+          "text": "这孩子，将来一定要读书。我们家再穷，也要供他识字。",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "dialogue",
+          "speakerId": "xu-father",
+          "expression": "default",
+          "text": "读书好是好，可别荒了地里的活。咱们庄户人家，说到底还是要靠田吃饭。",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "inner",
+          "text": "从小，我就习惯了在书本和泥土之间来回。阳光晒在田埂上的味道，混着纸墨的香气——那是我童年最深的记忆。",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "narration",
+          "text": "年幼的徐光启在父亲的教导下读书识字，母亲教他田间劳作。童年是在书本和泥土之间度过的。",
+          "citationRef": null,
+          "citationAnchor": null,
+          "delay": 2500
+        },
+        {
+          "type": "transition",
+          "nextScene": "ch01_s02"
+        }
+      ]
+    },
+    "ch01_s02": {
+      "sceneId": "ch01_s02",
+      "title": "辗转两广",
+      "location": "loc_shaozhou",
+      "background": "assets/images/backgrounds/guangdong-road.jpg",
+      "bgm": null,
+      "steps": [
+        {
+          "type": "narration",
+          "text": "后来家道中落，少年徐光启跟随亲戚远走两广谋生。他在奔波中考中了秀才，但乡试屡试不第。",
+          "citationRef": null,
+          "citationAnchor": null,
+          "delay": 3000
+        },
+        {
+          "type": "inner",
+          "text": "教书的日子很长，学生们的四书五经翻来覆去，我也翻来覆去。但这些书上，答不了我心里越来越大的问题——天为什么不会塌？海为什么不会漫？这个世界到底有多大？",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "narration",
+          "text": "二十几岁的徐光启，站在人生的泥沼里。教书糊口，功名渺茫。一个声音在心里越来越响：难道这辈子就这样了吗？",
+          "citationRef": null,
+          "citationAnchor": null,
+          "delay": 3000
+        },
+        {
+          "type": "choice",
+          "prompt": "教书多年，乡试屡败。你开始怀疑：科举真的适合我吗？",
+          "options": [
+            {
+              "id": "opt1",
+              "text": "坚持下去——继续埋头苦读，誓要走通科举之路",
+              "effects": {
+                "setFlags": ["path_exam"],
+                "nextScene": "ch01_s03"
+              }
+            },
+            {
+              "id": "opt2",
+              "text": "另寻出路——放弃科举幻想，转而钻研农学、水利等实用学问",
+              "effects": {
+                "setFlags": ["path_practical"],
+                "nextScene": "ch01_s03"
+              }
+            },
+            {
+              "id": "opt3",
+              "text": "两者兼顾——一边教书备考，一边留心各地的农事水利",
+              "effects": {
+                "setFlags": ["path_balanced"],
+                "nextScene": "ch01_s03"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "ch01_s03": {
+      "sceneId": "ch01_s03",
+      "title": "韶州·世界地图",
+      "location": "loc_shaozhou",
+      "background": "assets/images/backgrounds/shaozhou-room.jpg",
+      "bgm": null,
+      "steps": [
+        {
+          "type": "narration",
+          "text": "万历二十一年（1593），在广东韶州教书时，徐光启偶然走进了一间传教士的屋子。墙上挂着一幅画——不，那不是画，那是一张地图。一张他从未见过的、画着整个世界的图。",
+          "citationRef": "cit_002",
+          "citationAnchor": "画着整个世界的图",
+          "delay": 3500
+        },
+        {
+          "type": "inner",
+          "text": "地球……是圆的？中国不在世界的正中央？那个叫'欧罗巴'的地方，有着和我们完全不同的学问？如果这些都是真的，那么——我们读了这么多年的圣贤书，是不是漏掉了什么？",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "dialogue",
+          "speakerId": "conservative",
+          "expression": "default",
+          "text": "徐先生，此乃夷人之说，怪力乱神罢了！我等读圣贤书之人，切莫深究这些东西。",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "choice",
+          "prompt": "【支线节点一】同事劝你别理会这张地图。但你的内心已经被它点燃……",
+          "branchNode": "n1",
+          "options": [
+            {
+              "id": "n1_optA",
+              "text": "私下找来传教士，详细询问地图背后的知识",
+              "effects": {
+                "setFlags": ["branch_n1_west", "learned_western"],
+                "nextScene": "ch01_s04"
+              }
+            },
+            {
+              "id": "n1_optB",
+              "text": "记在心里，但对外不置可否，继续备考科举",
+              "effects": {
+                "setFlags": ["branch_n1_safe"],
+                "nextScene": "ch01_s04"
+              }
+            },
+            {
+              "id": "n1_optC",
+              "text": "公开反驳同僚——「华夏亦不过地球之一隅，我等何必自大？」",
+              "effects": {
+                "setFlags": ["branch_n1_radical", "rushed_to_exam"],
+                "nextScene": "ch01_s04"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "ch01_s04": {
+      "sceneId": "ch01_s04",
+      "title": "北上",
+      "location": "loc_nanjing",
+      "background": "assets/images/backgrounds/nanjing-road.jpg",
+      "bgm": null,
+      "steps": [
+        {
+          "type": "narration",
+          "text": "万历二十五年（1597），徐光启北上参加顺天府乡试，一举中举，且名列第一。",
+          "citationRef": "cit_001",
+          "citationAnchor": "一举中举，且名列第一",
+          "delay": 3000
+        },
+        {
+          "type": "inner",
+          "text": "中举了。但这次不一样——我来北京不是为了功名。世界地图上的那些地方，那些学问，我非要去亲眼看看不可。南京。听说利玛窦在南京。",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "narration",
+          "text": "带着被世界地图点燃的好奇心，徐光启决定继续北上。这一次，他不再是那个只为功名奔波的书生。一个新的世界，正在前方等着他。",
+          "citationRef": null,
+          "citationAnchor": null,
+          "delay": 3000
+        },
+        {
+          "type": "transition",
+          "nextScene": null,
+          "endChapter": true,
+          "setFlags": ["ch01_complete"]
+        }
+      ]
+    }
+  }
+}
