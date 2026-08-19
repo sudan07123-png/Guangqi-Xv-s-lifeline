@@ -1,0 +1,308 @@
+{
+  "chapterId": "ch02",
+  "title": "译书与功名",
+  "subtitle": "1600 — 1613",
+  "unlockCondition": null,
+  "scenes": {
+    "ch02_s01": {
+      "sceneId": "ch02_s01",
+      "title": "南京重逢",
+      "location": "loc_nanjing",
+      "background": "assets/images/backgrounds/nanjing-road.jpg",
+      "bgm": null,
+      "steps": [
+        {
+          "type": "narration",
+          "text": "万历二十八年（1600），徐光启来到南京。这座六朝古都的街巷深处，住着一个改变他一生的人——意大利传教士利玛窦。三年前韶州那张世界地图，今日终于要见到它的主人了。",
+          "citationRef": "cit_002",
+          "citationAnchor": "利玛窦",
+          "delay": 3500
+        },
+        {
+          "type": "inner",
+          "text": "三年前在韶州，我站在那张世界地图前，站了整整一个时辰。那上面有欧罗巴、有亚墨利加、有从未听说过的海洋和大陆。如果那张图是真的——那么我们读了一辈子的圣贤书，是不是还漏掉了更大的一片天？",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "narration",
+          "text": "利玛窦的住所并不难找。门开处，一位身着儒服的西洋人迎了出来——须发深目，却操着一口流利的南京官话。案上摆着铜制的星盘、三棱镜、自鸣钟，满室皆是中原未见之物。",
+          "citationRef": "cit_002",
+          "citationAnchor": "利玛窦",
+          "delay": 3000
+        },
+        {
+          "type": "dialogue",
+          "speakerId": "matteo-ricci",
+          "expression": "default",
+          "text": "徐先生远道而来，请坐。我在韶州便听人说起过你——那位站在地图前不言不语、看了一个时辰的书生。我一直在等你来。",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "dialogue",
+          "speakerId": "xu-guangqi",
+          "expression": "default",
+          "text": "利先生，我这些年心里积了一肚子的问题。天有多高？地有多厚？日月星辰究竟怎样运行？我们的圣贤书里没有这些答案——你那架星盘上，有吗？",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "dialogue",
+          "speakerId": "matteo-ricci",
+          "expression": "default",
+          "text": "有。但不是三言两语说得完的。你看这架星盘——它可以测出每一颗星在天空中的精确位置。在欧罗巴，我们以数学度天量地，这叫做天文学。你若想学，我可以慢慢教你。",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "narration",
+          "text": "利玛窦的博学和坦诚让徐光启深感震撼。烛光映在星盘的铜面上，那些刻度和线条闪着幽微的光——仿佛另一个世界的入口。可是会试在即，时间如刀。他必须做个决断。",
+          "citationRef": null,
+          "citationAnchor": null,
+          "delay": 3000
+        },
+        {
+          "type": "transition",
+          "nextScene": "ch02_s02"
+        }
+      ]
+    },
+    "ch02_s02": {
+      "sceneId": "ch02_s02",
+      "title": "利玛窦对谈·抉择",
+      "location": "loc_nanjing",
+      "background": "assets/images/backgrounds/nanjing-road.jpg",
+      "bgm": null,
+      "steps": [
+        {
+          "type": "narration",
+          "text": "利玛窦把星盘推到徐光启面前，又从书架上取下一册《几何原本》的拉丁文抄本，翻开来——三角形、圆、切线，整整齐齐，如兵法行阵。这些图形在中原的书本上从未出现过。",
+          "citationRef": "cit_005",
+          "citationAnchor": "《几何原本》",
+          "delay": 3500
+        },
+        {
+          "type": "dialogue",
+          "speakerId": "matteo-ricci",
+          "expression": "default",
+          "text": "徐先生，此乃欧几里得《几何原本》——西洋算学之根基。天文、历法、测地、造器，无不出于此书。你若想学，我知无不言。但你也要想清楚：科举之路如独木桥，容得下这份分心吗？",
+          "citationRef": "cit_005",
+          "citationAnchor": "《几何原本》"
+        },
+        {
+          "type": "choice",
+          "prompt": "【支线节点二】利玛窦愿倾囊相授。但你还要考进士——每日的光阴就那么多。你如何权衡？",
+          "branchNode": "n2",
+          "options": [
+            {
+              "id": "n2_optA",
+              "text": "每天抽出两个时辰跟利玛窦学数学和天文，复习科举时间减半",
+              "condition": { "notFlags": ["branch_n1_radical", "rushed_to_exam"] },
+              "effects": {
+                "setFlags": ["branch_n2_adventure", "strong_math_foundation"],
+                "nextScene": "ch02_s03"
+              }
+            },
+            {
+              "id": "n2_optB",
+              "text": "仅保持礼貌来往，考完进士再说",
+              "effects": {
+                "setFlags": ["branch_n2_cautious", "weak_western_knowledge"],
+                "nextScene": "ch02_s03"
+              }
+            },
+            {
+              "id": "n2_optC",
+              "text": "说服利玛窦入京，并计划联合译书",
+              "condition": { "requireFlags": ["branch_n1_west"] },
+              "effects": {
+                "setFlags": ["branch_n2_cooperate", "court_backing"],
+                "nextScene": "ch02_s03"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "ch02_s03": {
+      "sceneId": "ch02_s03",
+      "title": "会试之路",
+      "location": "loc_beijing",
+      "background": "assets/images/backgrounds/beijing-palace.jpg",
+      "bgm": null,
+      "steps": [
+        {
+          "type": "narration",
+          "text": "万历三十二年（1604），徐光启走进北京的会试考场。这一年的春天来得晚，贡院里的老槐树还秃着枝丫，风从门缝里钻进来，冻得人手抖。他磨好墨，铺开卷子——十年所学的程朱义理，和利玛窦教他的逻辑推演，在脑子里交织成了一片。",
+          "citationRef": "cit_001",
+          "citationAnchor": "万历三十二年（1604）",
+          "delay": 3500
+        },
+        {
+          "type": "inner",
+          "text": "三场考完，走出贡院时天色已暗。街上有叫卖烤红薯的，我买了一个，烫得两手来回倒。那一刻忽然想起利先生的话——他说天体的轨道是椭圆的，不是正圆。如果孔孟之道是正圆，那西洋之学，也许正是那个椭圆。两者不是敌人，是可以互补的。",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "narration",
+          "text": "放榜之日，徐光启的名字赫然列在二甲前列。十年寒窗，一朝释褐。他被选为庶吉士，入翰林院深造。这是通往大明权力核心的阶梯——但也是一潭深不见底的浑水。",
+          "citationRef": "cit_001",
+          "citationAnchor": "二甲前列",
+          "delay": 3000
+        },
+        {
+          "type": "transition",
+          "nextScene": "ch02_s04"
+        }
+      ]
+    },
+    "ch02_s04": {
+      "sceneId": "ch02_s04",
+      "title": "入翰林院",
+      "location": "loc_beijing",
+      "background": "assets/images/backgrounds/beijing-palace.jpg",
+      "bgm": null,
+      "steps": [
+        {
+          "type": "narration",
+          "text": "翰林院的日子并不像徐光启想象的那样安静。他从庶吉士一路做到检讨、赞善——官阶虽不算高，却已是天子近臣。但越是靠近权力的中心，他越感到一种无形的凉意。东林党与浙、齐、楚诸党的角力无日无之，每个人都得选边站。",
+          "citationRef": "cit_008",
+          "citationAnchor": "从庶吉士一路做到检讨、赞善",
+          "delay": 3500
+        },
+        {
+          "type": "dialogue",
+          "speakerId": "conservative",
+          "expression": "default",
+          "text": "子先兄，你我同僚一场，我有句话不吐不快。眼下东林诸公正欲澄清天下，浙党、齐党各怀心思。你若不站一边，到时候两边一起碾过来——谁来保你？你到底站哪边？",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "inner",
+          "text": "站哪边？我进翰林院，不是为了站队。利先生还在等我译《几何原本》。那些三角形和圆，比朝堂上的明枪暗箭干净得多。可是——独木不成林。不结盟，谁来替你挡风遮雨？",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "narration",
+          "text": "与此同时，利玛窦的身体日渐衰弱。他在北京的书斋里，桌上摊满了书稿。最厚的一叠——是只译了一半的《几何原本》。六卷已成，后九卷尚是空白。时间不等人。",
+          "citationRef": "cit_005",
+          "citationAnchor": "《几何原本》",
+          "delay": 3000
+        },
+        {
+          "type": "transition",
+          "nextScene": "ch02_s05"
+        }
+      ]
+    },
+    "ch02_s05": {
+      "sceneId": "ch02_s05",
+      "title": "译书与党争",
+      "location": "loc_beijing",
+      "background": "assets/images/backgrounds/beijing-palace.jpg",
+      "bgm": null,
+      "steps": [
+        {
+          "type": "narration",
+          "text": "利玛窦的书斋里光线昏暗。他靠在榻上，脸色蜡黄，手里还攥着一支鹅毛笔。桌上散落着徐光启和他一个字一个字抠出来的《几何原本》前六卷译稿——字迹工整，墨色鲜亮，那是无数个夜晚的心血。",
+          "citationRef": "cit_005",
+          "citationAnchor": "《几何原本》",
+          "delay": 3500
+        },
+        {
+          "type": "dialogue",
+          "speakerId": "matteo-ricci",
+          "expression": "default",
+          "text": "子先……我怕撑不到译完全本了。这部书——我把它交给你。但你要记住：书是死的，人是活的。大明朝堂是个旋涡，你若为译书卷入党争，书还没译完，人可能就没了。你想好了吗？",
+          "citationRef": "cit_005",
+          "citationAnchor": "这部书"
+        },
+        {
+          "type": "inner",
+          "text": "利先生的话像一枚铜钱落在地上，又冷又硬。译书需要安静，可朝堂上没有安静。我若加入东林，便有了庇护——但党争一旦失败，书必遭株连。我若独立，那些明枪暗箭谁来挡？",
+          "citationRef": null,
+          "citationAnchor": null
+        },
+        {
+          "type": "choice",
+          "prompt": "【支线节点三】利玛窦病重，《几何原本》还没译完。翰林院的同僚又在逼你站队。你如何取舍？",
+          "branchNode": "n3",
+          "options": [
+            {
+              "id": "n3_optA",
+              "text": "白天应付官场，夜里偷偷译书，两头兼顾",
+              "condition": { "notFlags": ["weak_western_knowledge"] },
+              "effects": {
+                "setFlags": ["branch_n3_balanced"],
+                "nextScene": "ch02_s06"
+              }
+            },
+            {
+              "id": "n3_optB",
+              "text": "公开拒绝站队，称「但知有书，不知有党」，全力译书",
+              "condition": { "requireFlags": ["strong_math_foundation"] },
+              "effects": {
+                "setFlags": ["branch_n3_purist", "protect_mission", "no_political_backing"],
+                "nextScene": "ch02_s06"
+              }
+            },
+            {
+              "id": "n3_optC",
+              "text": "加入东林党，以党援护译书事业",
+              "effects": {
+                "setFlags": ["branch_n3_politics", "joined_donglin", "purged_by_weizhongxian"],
+                "nextScene": "ch02_s06"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "ch02_s06": {
+      "sceneId": "ch02_s06",
+      "title": "告别与辞官",
+      "location": "loc_beijing",
+      "background": "assets/images/backgrounds/beijing-palace.jpg",
+      "bgm": null,
+      "steps": [
+        {
+          "type": "narration",
+          "text": "万历三十八年（1610），利玛窦在北京病逝。徐光启站在他的墓前，手里握着那叠《几何原本》前六卷的刊本。墨香还在，人已不在。这部中西学问合璧的开山之作，是他献给这位异邦师长最后的礼物。",
+          "citationRef": "cit_005",
+          "citationAnchor": "《几何原本》",
+          "delay": 3500
+        },
+        {
+          "type": "inner",
+          "text": "我在他的墓前站了很久。想起第一次在南京见他时，他说：「徐先生，你的这些问题，单靠四书五经是答不了的。」他说得对。如今他走了——还没有译完的书，还没有参透的道理，只剩下我一个人了。利先生临终前反复说：「欲求超胜，必须会通。」会通——可会通之前，我得先活下去。",
+          "citationRef": "cit_006",
+          "citationAnchor": "欲求超胜，必须会通"
+        },
+        {
+          "type": "narration",
+          "text": "利玛窦死后，朝中排教之风日烈。有人弹劾徐光启「私通西洋」，有人指他与东林结党。翰林院的同僚开始疏远他，连他译的书也被人在背后嗤为「夷人之技」。朝堂这潭水，越来越浑了。",
+          "citationRef": null,
+          "citationAnchor": null,
+          "delay": 3000
+        },
+        {
+          "type": "narration",
+          "text": "万历四十一年（1613），徐光启上书请辞。他带着一箱子书稿，离开北京，前往天津屯田垦荒。这一年他五十一岁。前半生的科场浮沉、译书辛劳告一段落——后半生的抱负，在天津的田野上等他。",
+          "citationRef": null,
+          "citationAnchor": null,
+          "delay": 3500
+        },
+        {
+          "type": "transition",
+          "nextScene": null,
+          "endChapter": true,
+          "setFlags": ["ch02_complete"]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,109 @@
+/* ============================================
+   光启时光 — 叙事页 HUD 菜单与设置样式
+   ============================================ */
+
+.hud-popover {
+  position: fixed;
+  z-index: var(--z-modal);
+  min-width: 220px;
+  max-width: 280px;
+  background: var(--color-cream);
+  border: 1px solid var(--color-parchment-dark);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-sm);
+  font-family: var(--font-ui);
+}
+
+.hud-popover-header {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  color: var(--color-green);
+  padding: var(--space-xs) var(--space-sm) var(--space-sm);
+  border-bottom: 1px solid var(--color-parchment-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.hud-popover-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  color: var(--color-ink);
+  cursor: pointer;
+  text-align: left;
+}
+
+.hud-popover-item:hover {
+  background: var(--color-parchment);
+}
+
+.hud-popover-icon {
+  font-size: var(--text-base);
+}
+
+.hud-setting-label {
+  font-size: var(--text-xs);
+  color: var(--color-ink-muted);
+  margin: var(--space-sm) var(--space-sm) var(--space-xs);
+}
+
+.hud-speed-row {
+  display: flex;
+  gap: var(--space-xs);
+  padding: 0 var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.hud-speed-btn {
+  flex: 1;
+  padding: var(--space-xs) 0;
+  border: 1px solid var(--color-parchment-dark);
+  background: #fff;
+  border-radius: var(--radius-md);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-ink-muted);
+  cursor: pointer;
+}
+
+.hud-speed-btn.active {
+  background: var(--color-green);
+  color: var(--color-parchment);
+  border-color: var(--color-green);
+}
+
+.hud-slider-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0 var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.hud-slider-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--color-green);
+}
+
+.hud-slider-val {
+  width: 2.4em;
+  text-align: right;
+  font-size: var(--text-sm);
+  color: var(--color-ink-muted);
+}
+
+.hud-settings-hint {
+  font-size: var(--text-xs);
+  color: var(--color-ink-muted);
+  opacity: 0.7;
+  padding: var(--space-xs) var(--space-sm) 0;
+  border-top: 1px solid var(--color-parchment-dark);
+  margin-top: var(--space-xs);
+}

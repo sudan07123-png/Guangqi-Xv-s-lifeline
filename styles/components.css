@@ -1,0 +1,364 @@
+/* ============================================
+   光启时光 — 通用组件样式
+   ============================================ */
+
+/* ============================================
+   引用提示工具 (Citation Tooltip)
+   ============================================ */
+
+.citation-tooltip {
+  position: fixed;
+  z-index: var(--z-tooltip);
+  max-width: 420px;
+  min-width: 260px;
+  background: linear-gradient(135deg, #f4efe3, #e9f1f6);
+  border: 1px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  box-shadow: var(--shadow-lg), var(--shadow-gold);
+  font-family: var(--font-citation);
+  font-size: var(--text-sm);
+  color: var(--color-ink);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px) scale(0.96);
+  transition: opacity var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
+}
+
+.citation-tooltip.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.citation-tooltip .tooltip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-parchment-dark);
+}
+
+.citation-tooltip .tooltip-source {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-gold-dark);
+  letter-spacing: 0.05em;
+}
+
+.citation-tooltip .tooltip-reliability {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--color-green);
+  color: #fff;
+}
+
+.citation-tooltip .tooltip-reliability.low {
+  background: var(--color-red-ming);
+}
+
+.citation-tooltip .tooltip-reliability.medium {
+  background: var(--color-gold-dark);
+}
+
+.citation-tooltip .tooltip-original {
+  margin-bottom: var(--space-sm);
+  line-height: 1.6;
+  color: var(--color-ink);
+  font-size: var(--text-base);
+}
+
+.citation-tooltip .tooltip-translation {
+  line-height: 1.5;
+  color: var(--color-ink-light);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+}
+
+.citation-tooltip .tooltip-translation::before {
+  content: '「译」';
+  font-size: 10px;
+  color: var(--color-ink-muted);
+  margin-right: var(--space-xs);
+}
+
+.citation-tooltip .tooltip-meta {
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-parchment-dark);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--color-ink-muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ============================================
+   模态框 (Modal)
+   ============================================ */
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: var(--z-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background: var(--color-parchment);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  max-width: 520px;
+  width: 90%;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  transform: translateY(20px);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.modal-overlay.active .modal-box {
+  transform: translateY(0);
+}
+
+.modal-box h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  color: var(--color-green);
+  margin-bottom: var(--space-md);
+}
+
+.modal-box p {
+  font-size: var(--text-base);
+  color: var(--color-ink-light);
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
+}
+
+.modal-box .modal-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+/* ============================================
+   对话框 (Dialogue Box)
+   ============================================ */
+
+.dialogue-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--space-lg) var(--space-2xl) var(--space-xl);
+  background: linear-gradient(to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.7) 60%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: var(--z-dialogue);
+}
+
+.dialogue-box .speaker-tag {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.05em;
+}
+
+.dialogue-box .dialogue-text {
+  font-family: var(--font-body);
+  font-size: var(--text-xl);
+  color: #fff;
+  line-height: 1.8;
+  min-height: 2em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.dialogue-box .dialogue-text .typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: var(--color-gold);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blinkCursor 0.8s infinite;
+}
+
+/* 旁白 / 独白中的打字机光标 */
+.narration-text .typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: var(--color-gold);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blinkCursor 0.8s infinite;
+}
+
+.dialogue-box .click-hint {
+  text-align: right;
+  font-size: var(--text-xs);
+  color: var(--color-ink-muted);
+  margin-top: var(--space-sm);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.dialogue-box .click-hint.show {
+  opacity: 0.7;
+}
+
+/* ============================================
+   选项按钮组 (Choice Buttons)
+   ============================================ */
+
+.choices-container {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  z-index: var(--z-choices);
+  width: 90%;
+  max-width: 560px;
+}
+
+.choice-btn {
+  display: block;
+  width: 100%;
+  padding: var(--space-md) var(--space-xl);
+  background: linear-gradient(135deg,
+    rgba(61, 59, 79, 0.92),
+    rgba(61, 59, 79, 0.85)
+  );
+  border: 1px solid var(--color-gold-dark);
+  border-radius: var(--radius-md);
+  color: var(--color-parchment);
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  line-height: 1.6;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+.choice-btn:hover {
+  background: linear-gradient(135deg,
+    rgba(66, 80, 102, 0.95),
+    rgba(61, 59, 79, 0.9)
+  );
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-gold);
+  transform: translateX(0) scale(1.02);
+}
+
+.choice-btn.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================
+   旁白叠加层 (Narration Overlay)
+   ============================================ */
+
+.narration-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-dialogue);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-slow) var(--ease-out);
+}
+
+.narration-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.narration-text {
+  max-width: 700px;
+  padding: var(--space-2xl);
+  font-family: var(--font-body);
+  font-size: var(--text-2xl);
+  color: #fff;
+  text-align: center;
+  line-height: 2;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   内心独白 (Inner Monologue)
+   ============================================ */
+
+.inner-monologue {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-dialogue);
+}
+
+.inner-monologue .inner-text {
+  max-width: 650px;
+  padding: var(--space-2xl);
+  font-family: var(--font-body);
+  font-size: var(--text-xl);
+  font-style: italic;
+  color: #d0ccc0;
+  text-align: center;
+  line-height: 2;
+}
+
+/* ============================================
+   点击继续指示器
+   ============================================ */
+
+.continue-indicator {
+  position: absolute;
+  bottom: 8%;
+  right: 8%;
+  z-index: var(--z-dialogue);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.continue-indicator.show {
+  opacity: 0.8;
+  animation: pulse 2s infinite;
+}
+
+.continue-indicator .arrow {
+  color: var(--color-gold);
+  font-size: var(--text-3xl);
+}

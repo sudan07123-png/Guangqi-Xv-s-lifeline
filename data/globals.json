@@ -1,0 +1,33 @@
+{
+  "gameTitle": "光启时光",
+  "gameSubtitle": "一个关于知识、信仰与抉择的大明故事",
+  "initialFlags": [],
+  "initialRelationships": {
+    "xu-father": 60,
+    "xu-mother": 70,
+    "matteo-ricci": 0,
+    "xu-ji": 40,
+    "chongzhen": 0,
+    "conservative": 20
+  },
+  "initialChapter": "ch01",
+  "initialScene": "ch01_s01",
+  "chapters": [
+    { "id": "ch01", "title": "寒门少年", "subtitle": "1562 — 1600", "unlockCondition": null, "branchNodes": ["n1"] },
+    { "id": "ch02", "title": "译书与功名", "subtitle": "1600 — 1613", "unlockCondition": "hasFlag:ch01_complete", "branchNodes": ["n2", "n3"] },
+    { "id": "ch03", "title": "归去来兮", "subtitle": "1613 — 1633", "unlockCondition": "hasFlag:ch02_complete", "branchNodes": ["n4", "n5"] }
+  ],
+  "branchSystem": {
+    "dataFile": "data/branches.json",
+    "totalNodes": 5,
+    "totalEndings": 6,
+    "hiddenEndingPath": ["n1_optA", "n2_optA", "n3_optB", "n4_optA", "n5_optA"],
+    "hiddenEndingId": "ending_daming_academy"
+  },
+  "defaultSettings": {
+    "textSpeed": 50,
+    "autoSaveInterval": 60000,
+    "musicVolume": 0.7,
+    "sfxVolume": 1.0
+  }
+}

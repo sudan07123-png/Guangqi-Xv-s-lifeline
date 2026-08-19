@@ -1,0 +1,323 @@
+{
+  "version": 1,
+  "description": "徐光启互动叙事 — 支线系统定义。5个分支节点，节点间连锁规则，结局判定。",
+
+  "branchNodes": [
+    {
+      "nodeId": "n1",
+      "title": "韶州·世界地图前的震撼",
+      "chapter": "ch01",
+      "sceneId": "ch01_s02",
+      "year": 1593,
+      "prompt": "你在广东韶州教书，偶见传教士带来的世界地图，第一次知道「地球是圆的」。同事劝你：「此乃怪力乱神，勿要深究。」",
+      "options": [
+        {
+          "id": "n1_optA",
+          "text": "私下找来传教士，详细询问地图背后的知识",
+          "label": "西学启蒙",
+          "flags": ["branch_n1_west", "learned_western"],
+          "feedback": "获得传教士好感，获赠基础数学书籍。开启西学之路。",
+          "historyAccuracy": "close",
+          "nextScenes": {
+            "default": "ch01_s03",
+            "alsoUnlocks": ["n2_optA"]
+          }
+        },
+        {
+          "id": "n1_optB",
+          "text": "记在心里，但对外不置可否，继续备考科举",
+          "label": "稳妥保身",
+          "flags": ["branch_n1_safe"],
+          "feedback": "无损失，但错失早期学习机会。后续学西学起点较低。",
+          "historyAccuracy": "fictional",
+          "nextScenes": {
+            "default": "ch01_s03",
+            "alsoUnlocks": []
+          }
+        },
+        {
+          "id": "n1_optC",
+          "text": "公开反驳同僚，称「华夏亦不过地球之一隅」",
+          "label": "激进公开",
+          "flags": ["branch_n1_radical", "rushed_to_exam"],
+          "feedback": "遭同僚排挤，被迫离开韶州。无法在南京从容停留。",
+          "historyAccuracy": "fictional_risk",
+          "nextScenes": {
+            "default": "ch01_s03",
+            "alsoUnlocks": []
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "n2",
+      "title": "南京·与利玛窦的初次对谈",
+      "chapter": "ch02",
+      "sceneId": "ch02_s02",
+      "year": 1600,
+      "prompt": "在南京结识利玛窦，他向你说起星盘、天象、数术。是继续专程朱理学准备会试，还是花大量时间跟这位洋人学「无用之术」？",
+      "options": [
+        {
+          "id": "n2_optA",
+          "text": "每天抽出两个时辰跟利玛窦学数学和天文，复习科举时间减半",
+          "label": "冒险投入",
+          "flags": ["branch_n2_adventure", "strong_math_foundation"],
+          "condition": { "notFlags": ["branch_n1_radical", "rushed_to_exam"] },
+          "feedback": "科举复习不足，1601年会试落榜；但数学基础扎实，为日后翻译《几何原本》打下根基。",
+          "historyAccuracy": "close",
+          "nextScenes": {
+            "default": "ch02_s03",
+            "ifFlags": { "strong_math_foundation": "ch02_s05" }
+          }
+        },
+        {
+          "id": "n2_optB",
+          "text": "仅保持礼貌来往，考完进士再说",
+          "label": "稳妥保守",
+          "flags": ["branch_n2_cautious", "weak_western_knowledge"],
+          "feedback": "1604年顺利考中进士，但西学知识薄弱。后续只能简单协助翻译。",
+          "historyAccuracy": "alternate",
+          "nextScenes": {
+            "default": "ch02_s03"
+          }
+        },
+        {
+          "id": "n2_optC",
+          "text": "说服利玛窦入京，并计划联合译书",
+          "label": "超前合作",
+          "flags": ["branch_n2_cooperate", "court_backing"],
+          "condition": { "requireFlags": ["branch_n1_west"], "logic": "or" },
+          "conditionNote": "节点一选 A 或 B 时可解锁（选 C 则不可用）",
+          "feedback": "利玛窦同意北上，但遭南京礼部阻挠，计划暂时搁浅。不过朝廷中已有官员注意到你们的合作。",
+          "historyAccuracy": "semi_fictional",
+          "nextScenes": {
+            "default": "ch02_s03"
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "n3",
+      "title": "翰林院·译书还是站队？",
+      "chapter": "ch02",
+      "sceneId": "ch02_s04",
+      "year": 1604,
+      "prompt": "你终于入翰林院。东林党争渐起，同僚拉你入伙。而利玛窦病重，《几何原本》只译了一半。你如何取舍？",
+      "options": [
+        {
+          "id": "n3_optA",
+          "text": "白天应付官场，夜里偷偷译书，两头兼顾",
+          "label": "平衡兼顾",
+          "flags": ["branch_n3_balanced"],
+          "condition": { "notFlags": ["weak_western_knowledge"] },
+          "conditionNote": "节点二选 B 则不可用（西学基础不足以独立翻译）",
+          "feedback": "译书进度慢，但官位稳。利玛窦去世前仅完成前6卷。",
+          "historyAccuracy": "alternate_balanced"
+        },
+        {
+          "id": "n3_optB",
+          "text": "公开拒绝站队，称「但知有书，不知有党」，全力译书",
+          "label": "清流译书",
+          "flags": ["branch_n3_purist", "protect_mission", "no_political_backing"],
+          "condition": { "requireFlags": ["strong_math_foundation"] },
+          "conditionNote": "节点二必须选 A（有扎实数学基础才能主导翻译）",
+          "feedback": "遭两党冷眼，但译完前6卷，获「几何」「点」「线」「面」命名权。利玛窦临终赞许。",
+          "historyAccuracy": "highly_accurate"
+        },
+        {
+          "id": "n3_optC",
+          "text": "加入东林党，以党援护译书事业",
+          "label": "政治投机",
+          "flags": ["branch_n3_politics", "joined_donglin", "purged_by_weizhongxian"],
+          "feedback": "东林庇护下译书加速。但魏忠贤上台后遭清算，被迫流放。",
+          "historyAccuracy": "fictional_crisis"
+        }
+      ]
+    },
+    {
+      "nodeId": "n4",
+      "title": "天津·开荒种田还是静待起复？",
+      "chapter": "ch03",
+      "sceneId": "ch03_s01",
+      "year": 1613,
+      "prompt": "党争白热化，你告病辞官。有人劝你「闭门读书，等圣心回转」。而你手上有《甘薯疏》草稿和江南稻种。",
+      "options": [
+        {
+          "id": "n4_optA",
+          "text": "开垦荒田，试种水稻和甘薯，撰写农书",
+          "label": "实干垦荒",
+          "flags": ["branch_n4_practical", "neutral_politics", "trusted_by_chongzhen"],
+          "condition": { "notFlags": ["purged_by_weizhongxian"] },
+          "conditionNote": "节点三选 C 则不可用（已被流放，无法自主垦荒）",
+          "feedback": "水稻试种成功，亩产提高；《甘薯疏》初稿完成。获「知稼穑之臣」评语。",
+          "historyAccuracy": "historically_accurate"
+        },
+        {
+          "id": "n4_optB",
+          "text": "隐居读书，整理历法笔记，等待朝廷重新启用",
+          "label": "隐居蓄力",
+          "flags": ["branch_n4_reserve", "stayed_retired"],
+          "feedback": "无实际政绩，但历法手稿更完善。后续修历时理论基础扎实。",
+          "historyAccuracy": "alternate_optimistic"
+        },
+        {
+          "id": "n4_optC",
+          "text": "将稻种和农书献给地方官，谋求借势复出",
+          "label": "曲线复出",
+          "flags": ["branch_n4_curve", "sidelined"],
+          "feedback": "地方官据为己功，你仅获小官复出。修历主导权旁落。",
+          "historyAccuracy": "fictional_setback"
+        }
+      ]
+    },
+    {
+      "nodeId": "n5",
+      "title": "崇祯朝·修历是「修补」还是「革命」？",
+      "chapter": "ch03",
+      "sceneId": "ch03_s06",
+      "year": 1629,
+      "prompt": "崇祯命你主持修历。旧派主张「删改旧历、微调即可」。你深知西方第谷体系精度远胜旧法。武将也希望你借此机会力推西洋火炮。",
+      "isFinalNode": true,
+      "options": [
+        {
+          "id": "n5_optA",
+          "text": "全盘采用第谷体系，并将火器制造纳入修历局",
+          "label": "科技革命",
+          "flags": ["branch_n5_tech", "persisted_memorial"],
+          "feedback": "保守派猛烈弹劾；你变卖家产捐充军饷。历书137卷编成。",
+          "historyAccuracy": "historically_accurate",
+          "triggersEnding": "auto",
+          "nextScenes": {
+            "default": "ch03_s07"
+          }
+        },
+        {
+          "id": "n5_optB",
+          "text": "先修历，火炮之事暂缓，避免树敌",
+          "label": "渐进改良",
+          "flags": ["branch_n5_moderate", "gave_up_memorial"],
+          "feedback": "历法改革推进较顺，但火炮引进失败。你始终对此抱憾。",
+          "historyAccuracy": "alternate_optimistic",
+          "triggersEnding": "auto",
+          "nextScenes": {
+            "default": "ch03_s07"
+          }
+        },
+        {
+          "id": "n5_optC",
+          "text": "迁就旧臣，修历小幅改动，保官位为主",
+          "label": "妥协保守",
+          "flags": ["branch_n5_compromise", "gave_up_memorial", "compromised"],
+          "feedback": "旧臣满意，但历书精度不足。崇祯失望，贬官外放。",
+          "historyAccuracy": "fictional_failure",
+          "triggersEnding": "auto",
+          "nextScenes": {
+            "default": "ch03_s07"
+          }
+        },
+        {
+          "id": "n5_optD",
+          "text": "心灰意冷，辞官归隐天津田园，把未尽之事留给后人",
+          "label": "归隐田园",
+          "flags": ["branch_n5_retreat", "ch03_complete"],
+          "condition": { "requireFlags": ["stayed_retired"] },
+          "feedback": "你退出这场无休止的朝堂争斗，把余生还给土地。历法终未完成，但你的农书已救了千万人。",
+          "historyAccuracy": "fictional_retreat",
+          "triggersEnding": "ending_tianyuan",
+          "nextScenes": {
+            "default": null
+          }
+        }
+      ]
+    }
+  ],
+
+  "endingRules": [
+    {
+      "endingId": "ending_daming_academy",
+      "title": "大明科学院",
+      "rank": "gold_hidden",
+      "description": "隐藏结局：你在最关键的每个节点都做出了最优选择，最终不仅完成历法，还说服崇祯设立「大明测算馆」——中国最早的国家科学研究院。",
+      "conditions": {
+        "requireFlags": [
+          "branch_n1_west",
+          "branch_n2_adventure",
+          "branch_n3_purist",
+          "branch_n4_practical",
+          "branch_n5_tech",
+          "trusted_by_chongzhen"
+        ],
+        "notFlags": ["compromised", "gave_up_memorial", "purged_by_weizhongxian", "sidelined"]
+      }
+    },
+    {
+      "endingId": "ending_huitong",
+      "title": "启明孤星",
+      "rank": "gold",
+      "description": "真结局：你选择了学习西学、保护传教士、坚持上书。徐光启的一生，真正做到了「会通」与「超胜」。",
+      "conditions": {
+        "requireFlags": ["branch_n5_tech", "branch_n3_purist", "branch_n4_practical"],
+        "notFlags": ["compromised", "gave_up_memorial"]
+      }
+    },
+    {
+      "endingId": "ending_liangshi",
+      "title": "良史未竟",
+      "rank": "silver",
+      "description": "普通结局：你选择了温和改良路线，历书以更平稳方式推行。但火炮始终是你心中的遗憾，学术影响略逊于全盘革新。",
+      "conditions": {
+        "requireFlags": ["branch_n5_moderate"],
+        "notFlags": ["compromised", "branch_n5_compromise"]
+      }
+    },
+    {
+      "endingId": "ending_tianyuan",
+      "title": "归隐田园",
+      "rank": "silver",
+      "description": "普通结局：你在党争中保持中立，选择隐退。虽然没有完成历法改革，但农业推广救了千万人的命。",
+      "conditions": {
+        "requireFlags": ["branch_n4_reserve", "stayed_retired", "branch_n5_retreat"],
+        "notFlags": ["branch_n5_tech", "compromised", "gave_up_memorial"]
+      }
+    },
+    {
+      "endingId": "ending_jucui",
+      "title": "鞠躬尽瘁",
+      "rank": "bronze",
+      "description": "遗憾结局：你出山力挽狂澜，但因政治包袱无法全力推进革新。历书虽成，心有遗憾。",
+      "conditions": {
+        "requireFlags": ["branch_n5_tech", "purged_by_weizhongxian"]
+      }
+    },
+    {
+      "endingId": "ending_weichou",
+      "title": "庸臣之叹",
+      "rank": "bronze",
+      "description": "失败结局：放弃西学、多次妥协。历书未竟，火炮未成。后世评价为「有才而畏事」。",
+      "conditions": {
+        "requireFlags": ["branch_n5_compromise", "compromised", "gave_up_memorial"]
+      }
+    }
+  ],
+
+  "hiddenEndingPath": {
+    "description": "大明科学院隐藏结局的精确路径",
+    "sequence": [
+      { "node": "n1", "choice": "n1_optA" },
+      { "node": "n2", "choice": "n2_optA" },
+      { "node": "n3", "choice": "n3_optB" },
+      { "node": "n4", "choice": "n4_optA" },
+      { "node": "n5", "choice": "n5_optA" }
+    ],
+    "requiredFlags": [
+      "branch_n1_west",
+      "branch_n2_adventure",
+      "branch_n3_purist",
+      "branch_n4_practical",
+      "branch_n5_tech",
+      "trusted_by_chongzhen"
+    ],
+    "endingText": "若你在修历同时，成功说服崇祯设立「译局」，聚集西学人才，并避开保守派暗算——则徐光启在去世前建成「大明测算馆」，中国最早的国家科学研究院。此后红夷大炮量产，后金攻城受阻，明朝延续数十年。",
+    "stats": { "knowledge": 100, "courage": 95, "integrity": 90 }
+  }
+}
